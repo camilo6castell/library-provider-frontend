@@ -6,7 +6,8 @@ import {
 import { Injectable } from '@angular/core';
 import { ErrorsService } from '../errors/errors.service';
 import { StorageService } from '../storage/storage.service';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
+import { IUserModel } from '../../../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +19,14 @@ export class HttpService {
     private readonly storageService: StorageService
   ) {}
 
+  // Token mangament
   get token(): string {
     return this.storageService.get<string>('TOKEN');
   }
+  set token(token: string) {
+    this.storageService.set('TOKEN', token);
+  }
+  //
 
   get header(): HttpHeaders {
     return new HttpHeaders()
@@ -40,10 +46,21 @@ export class HttpService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  post<T>(url: string, body: string): Observable<T> {
-    return this.httpClient
-      .post<T>(url, body, { headers: this.header })
-      .pipe(catchError((error) => this.handleError(error)));
+  // post<T>(url: string, body: string): Observable<T> {
+  //   return this.httpClient
+  //     .post<T>(url, body, { headers: this.header })
+  //     .pipe(catchError((error) => this.handleError(error)));
+  // }
+
+  postCreateNewUser<T>(url: string, body: IUserModel): Observable<T> {
+    return this.httpClient.post<T>(url, body, { headers: this.header }).pipe(
+      tap((response: any) => {
+        if (response.token) {
+          this.token = response.token;
+        }
+      }),
+      catchError((error) => this.handleError(error))
+    );
   }
 
   put<T>(url: string, body: string): Observable<T> {

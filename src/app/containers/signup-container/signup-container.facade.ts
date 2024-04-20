@@ -2,20 +2,18 @@ import { Observable, Subscription, tap } from 'rxjs';
 import { AppState } from '../../core/state/app.state';
 import { UserService } from '../../core/services/user/user.service';
 import { IUserModel } from '../../core/models/user.model';
+import { Injectable } from '@angular/core';
 
-export class HomeContainerFacade {
+@Injectable({
+  providedIn: 'root',
+})
+export class indexContainerFacade {
   private subscriptions: Subscription;
 
   constructor(
     private readonly appState: AppState,
     private readonly userService: UserService
   ) {}
-
-  // region observables
-  user$(): Observable<IUserModel> {
-    return this.appState.user.user.$();
-  }
-  //#endregion
 
   //#region public methods
   initSubsciptions(): void {
@@ -26,13 +24,13 @@ export class HomeContainerFacade {
     this.subscriptions.unsubscribe();
   }
 
-  // getUsers(): void {
-  //   this.subscriptions.add(
-  //     this.userService
-  //       .getUser()
-  //       .pipe(tap(this.appState.user.user.set.bind(this)))
-  //       .subscribe()
-  //   );
-  // }
+  createUser(newUser: IUserModel): void {
+    this.subscriptions.add(
+      this.userService
+        .registerUser(newUser)
+        .pipe(tap(this.appState.user.user.set.bind(this)))
+        .subscribe()
+    );
+  }
   //#endregion
 }

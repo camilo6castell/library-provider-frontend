@@ -1,6 +1,7 @@
 import { environment } from '../../../environments/environment.development';
 
 export const URL_RESOURCES = {
-  user: `${environment.apiUrl}/`,
-  userParams: (params: string) => `${environment.apiUrl}/${params}`,
+  userSignUp: `${environment.apiUrl}:${environment.apiPort}${environment.apiVer}/register`,
+  userLogIn: `${environment.apiUrl}:${environment.apiPort}/authenticate`,
+  // userParams: (params: string) => `${environment.apiUrl}/${params}`,
 };

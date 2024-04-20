@@ -19,7 +19,7 @@ export class HomeContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.homeContainerFacade.initSubsciptions();
-    this.homeContainerFacade.getUsers();
+    // this.homeContainerFacade.getUsers();
     this.initializeSubscriptions();
   }
 

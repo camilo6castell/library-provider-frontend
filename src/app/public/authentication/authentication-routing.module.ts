@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IndexContainerComponent } from '../../containers/index-container/index-container.component';
+import { signupComponent } from '../../containers/signup-container/signup-container.component';
 import { LoginFormComponent } from '../../ui/forms/login-form/login-form.component';
 import { SignupFormComponent } from '../../ui/forms/signup-form/signup-form.component';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: IndexContainerComponent,
+    component: signupComponent,
     children: [
       {
         path: 'login',

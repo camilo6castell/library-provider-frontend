@@ -4,6 +4,9 @@ import { NavbarBlockComponent } from '../../ui/blocks/navbar-block/navbar-block.
 import { RouterOutlet } from '@angular/router';
 import { LoginFormComponent } from '../../ui/forms/login-form/login-form.component';
 import { SignupFormComponent } from '../../ui/forms/signup-form/signup-form.component';
+import { IUserModel } from '../../core/models/user.model';
+import { Observable } from 'rxjs';
+import { indexContainerFacade } from './signup-container.facade';
 
 @Component({
   selector: 'app-index-container',
@@ -15,6 +18,16 @@ import { SignupFormComponent } from '../../ui/forms/signup-form/signup-form.comp
     LoginFormComponent,
     SignupFormComponent,
   ],
-  templateUrl: './index-container.component.html',
+  templateUrl: './signup-container.component.html',
 })
-export class IndexContainerComponent {}
+export class signupComponent {
+  newUser: IUserModel;
+
+  submitNewUser(newUser: IUserModel) {
+    this.newUser = newUser;
+    console.log(newUser);
+  }
+
+  public user$: Observable<IUserModel>;
+  constructor(private readonly facade: indexContainerFacade) {}
+}
