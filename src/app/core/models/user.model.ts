@@ -1,4 +1,4 @@
-export default interface IuserModel {
+export interface IUserModel {
   firstName: String;
   lastName: String;
   email: String;

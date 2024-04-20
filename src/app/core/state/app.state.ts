@@ -7,7 +7,7 @@ import { UserState } from './user.state';
 export class AppState {
   constructor(private readonly userState: UserState) {}
 
-  get users() {
+  get user() {
     return this.userState.store();
   }
 }

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import IuserModel from '../models/user.model';
+import { IUserModel } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiToUserMApper {
-  map(payload: any): IuserModel {
+  map(payload: any): IUserModel {
     return {
       firstName: payload.firstName,
       lastName: payload.lastName,
