@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'index',
     loadChildren: () =>
       import('./public/public.module').then((module) => module.PublicModule),
   },
@@ -13,6 +13,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'index',
   },
 ];
