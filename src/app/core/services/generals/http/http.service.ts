@@ -34,6 +34,10 @@ export class HttpService {
       .append('Authorization', `Bearer ${this.token}`);
   }
 
+  get headerRegister(): HttpHeaders {
+    return new HttpHeaders().append('Content-type', 'application/json');
+  }
+
   private handleError(error: HttpErrorResponse): Observable<never> {
     return throwError(() => this.errorService.extract(error));
   }
@@ -52,15 +56,17 @@ export class HttpService {
   //     .pipe(catchError((error) => this.handleError(error)));
   // }
 
-  postCreateNewUser<T>(url: string, body: IUserModel): Observable<T> {
-    return this.httpClient.post<T>(url, body, { headers: this.header }).pipe(
-      tap((response: any) => {
-        if (response.token) {
-          this.token = response.token;
-        }
-      }),
-      catchError((error) => this.handleError(error))
-    );
+  postServiceCreateNewUser<T>(url: string, body: IUserModel): Observable<T> {
+    return this.httpClient
+      .post<T>(url, body, { headers: this.headerRegister })
+      .pipe(
+        tap((response: any) => {
+          if (response.token) {
+            this.token = response.token;
+          }
+        }),
+        catchError((error) => this.handleError(error))
+      );
   }
 
   put<T>(url: string, body: string): Observable<T> {

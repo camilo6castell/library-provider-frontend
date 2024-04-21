@@ -19,8 +19,8 @@ export class UserService {
   //     .get<IUserModel>(url)
   //     .pipe(map((result) => this.apiToUserMapper.map(result)));
   // }
-  registerUser(body: IUserModel): Observable<any> {
+  registerUserService(body: IUserModel): Observable<any> {
     const url = URL_RESOURCES.userSignUp;
-    return this.httpService.postCreateNewUser(url, body);
+    return this.httpService.postServiceCreateNewUser(url, body);
   }
 }
