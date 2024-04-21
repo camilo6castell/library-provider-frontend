@@ -34,7 +34,8 @@ export class HomeContainerFacade {
   }
 
   deleteToken(): void {
-    this.userService.isAuthenticated = false;
+    // this.userService.isAuthenticated = false;
+    this.storageService.remove('TOKEN');
     this.router.navigate(['/login']);
   }
 

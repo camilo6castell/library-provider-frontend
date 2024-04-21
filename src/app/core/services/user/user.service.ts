@@ -10,7 +10,7 @@ import { ILoginModel } from '../../models/login.model';
   providedIn: 'root',
 })
 export class UserService {
-  public isAuthenticated = false;
+  // public isAuthenticated = false;
   constructor(
     private readonly httpService: HttpService,
     private apiToUserMapper: ApiToUserMApper
@@ -26,7 +26,8 @@ export class UserService {
     return this.httpService.postServiceCreateNewUser(url, body);
   }
   loginUserService(body: ILoginModel): Observable<any> {
-    const url = URL_RESOURCES.userSignUp;
+    console.log('loginUserService', body);
+    const url = URL_RESOURCES.userLogIn;
     return this.httpService.postServiceLoginUser(url, body);
   }
 }

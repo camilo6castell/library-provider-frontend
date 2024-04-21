@@ -13,4 +13,8 @@ export class StorageService {
   remove(key: string): void {
     localStorage.removeItem(key);
   }
+
+  static getToken(key: string): string | null {
+    return localStorage.getItem(key) as string;
+  }
 }

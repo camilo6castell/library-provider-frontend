@@ -103,6 +103,8 @@ export class HttpService {
         tap((response: any) => {
           if (response.token) {
             this.token = response.token;
+            this.storageService.set('TOKEN', this.token);
+            console.log('httpService: ', this.storageService.get('TOKEN'));
           }
         }),
         catchError(this.handleError)
