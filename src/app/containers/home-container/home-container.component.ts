@@ -12,22 +12,25 @@ import { HomeContainerFacade } from './home-container.facade';
   imports: [MainLayoutComponent, NavbarBlockComponent, ButtonElementComponent],
   templateUrl: './home-container.component.html',
 })
-export class HomeContainerComponent implements OnInit, OnDestroy {
-  public user$: Observable<ISignupModel>;
-
+export class HomeContainerComponent {
   constructor(private readonly homeContainerFacade: HomeContainerFacade) {}
+  // ngOnInit(): void {
+  //   this.homeContainerFacade.initSubsciptions();
+  //   // this.homeContainerFacade.getUsers();
+  //   this.initializeSubscriptions();
 
-  ngOnInit(): void {
-    this.homeContainerFacade.initSubsciptions();
-    // this.homeContainerFacade.getUsers();
-    this.initializeSubscriptions();
-  }
+  // public user$: Observable<ISignupModel>;
+  // }
+  // ngOnDestroy(): void {
+  //   this.homeContainerFacade.destroySubscriptions();
+  // }
+  // private initializeSubscriptions(): void {
+  //   this.user$ = this.homeContainerFacade.user$();
+  // }
 
-  ngOnDestroy(): void {
-    this.homeContainerFacade.destroySubscriptions();
-  }
-
-  private initializeSubscriptions(): void {
-    this.user$ = this.homeContainerFacade.user$();
+  closeSession(closeSession: Boolean) {
+    if (closeSession) {
+      this.homeContainerFacade.deleteToken();
+    }
   }
 }

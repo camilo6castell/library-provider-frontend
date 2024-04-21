@@ -10,6 +10,7 @@ import { ILoginModel } from '../../models/login.model';
   providedIn: 'root',
 })
 export class UserService {
+  public isAuthenticated = false;
   constructor(
     private readonly httpService: HttpService,
     private apiToUserMapper: ApiToUserMApper

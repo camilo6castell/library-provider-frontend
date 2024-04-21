@@ -12,7 +12,7 @@ export class LoginContainerFacade {
   private subscriptions: Subscription;
 
   constructor(
-    private readonly appState: AppState,
+    // private readonly appState: AppState,
     private readonly userService: UserService,
     private router: Router
   ) {}
@@ -30,14 +30,14 @@ export class LoginContainerFacade {
     this.subscriptions.add(
       this.userService
         .loginUserService(loggedUser)
-        .pipe(
-          tap(() => {
-            this.appState.user.user.set.bind(this);
-            console.log('que es esto: ', this);
-          })
-        )
+        // .pipe(
+        //   tap(() => {
+        //     this.userService.isAuthenticated = true
+        //   })
+        // )
         .subscribe(
           () => {
+            this.userService.isAuthenticated = true;
             this.router.navigate(['/home']);
           },
           (error) => {

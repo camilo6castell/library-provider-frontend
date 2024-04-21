@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupContainerComponent } from '../../containers/signup-container/signup-container.component';
 import { LoginContainerComponent } from '../../containers/login-container/login-container.component';
+import { authenticationGuardGuard } from './authentication-guard.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +13,8 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginContainerComponent,
+    canActivate: [authenticationGuardGuard],
+
     // children: [
     //   {
     //     path: 'login',
@@ -24,7 +27,7 @@ const routes: Routes = [
     // ],
   },
   {
-    path: 'register',
+    path: 'signup',
     component: SignupContainerComponent,
   },
 ];

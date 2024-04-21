@@ -7,7 +7,7 @@ import { StateFactory } from './factory.state';
   providedIn: 'root',
 })
 export class UserState {
-  private user$: BehaviorSubject<ISignupModel> = new BehaviorSubject(null);
+  private user$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   //   private currentUser$: BehaviorSubject<IUserModel> = new BehaviorSubject(null);
 
   constructor(private readonly factory: StateFactory) {}

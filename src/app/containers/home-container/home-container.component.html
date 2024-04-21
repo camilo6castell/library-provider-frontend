@@ -2,7 +2,10 @@
   <app-navbar-block slot="[header]">
     @if(1 < 9){
     <li>
-      <app-button-element textButton="Cerrar sesión" />
+      <app-button-element
+        (activateButtonEvent)="closeSession($event)"
+        textButton="Cerrar sesión"
+      />
     </li>
     }
   </app-navbar-block>

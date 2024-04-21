@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button-element',
@@ -9,4 +9,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonElementComponent {
   @Input() textButton: String = '';
+  @Output() activateButtonEvent = new EventEmitter<Boolean>();
+
+  activateButton() {
+    this.activateButtonEvent.emit(true);
+  }
 }
