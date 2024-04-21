@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ISignupModel } from '../../models/signup.model';
 import { URL_RESOURCES } from '../../resources/url.resources';
 import { ILoginModel } from '../../models/login.model';
+import { ISaveAndQuoteTexModel } from '../../models/save-and-quote-text.model';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,9 @@ export class UserService {
     console.log('loginUserService', body);
     const url = URL_RESOURCES.userLogIn;
     return this.httpService.postServiceLoginUser(url, body);
+  }
+  saveAndQuoteTextService(body: ISaveAndQuoteTexModel): Observable<any> {
+    const url = URL_RESOURCES.saveAndQuoteText;
+    return this.httpService.post(url, body);
   }
 }

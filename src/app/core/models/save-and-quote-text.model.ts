@@ -1,4 +1,4 @@
-export interface ISaveAndQuoteTextInterface {
+export interface ISaveAndQuoteTexModel {
   text: {
     title: string;
     type: number;

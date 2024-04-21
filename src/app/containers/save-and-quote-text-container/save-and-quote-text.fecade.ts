@@ -5,6 +5,7 @@ import { ISignupModel } from '../../core/models/signup.model';
 import { StorageService } from '../../core/services/generals/storage/storage.service';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ISaveAndQuoteTexModel } from '../../core/models/save-and-quote-text.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,19 +34,25 @@ export class SaveAndQuoteTextFecade {
     this.subscriptions.unsubscribe();
   }
 
+  saveAndQuoteTextFecadeService(body: ISaveAndQuoteTexModel): void {
+    this.userService.saveAndQuoteTextService(body).subscribe(
+      () => {
+        // Registro exitoso, redireccionar a home-component
+        alert('El texto ha sido agregado, serás redirigido al menú anterior');
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        // Error al registrar, mostrar alerta
+        console.error('Error al guardar el texto:', error);
+        alert('Error al guardar el texto. Serás redirigido al menú anterior.');
+        this.router.navigate(['/home']);
+      }
+    );
+  }
+
   deleteToken(): void {
     // this.userService.isAuthenticated = false;
     this.storageService.remove('TOKEN');
     this.router.navigate(['/login']);
   }
-
-  // getUsers(): void {
-  //   this.subscriptions.add(
-  //     this.userService
-  //       .getUser()
-  //       .pipe(tap(this.appState.user.user.set.bind(this)))
-  //       .subscribe()
-  //   );
-  // }
-  //#endregion
 }

@@ -38,7 +38,7 @@ export class SignupFormComponent {
       // console.log('Form submitted!', this.userModel);
       // Send data to backend here
     } else {
-      console.error('Invalid form!');
+      alert('formulario inválido!');
     }
   }
 }

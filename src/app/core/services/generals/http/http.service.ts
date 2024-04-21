@@ -51,7 +51,7 @@ export class HttpService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  post<T>(url: string, body: string): Observable<T> {
+  post<T>(url: string, body: T): Observable<T> {
     return this.httpClient
       .post<T>(url, body, { headers: this.header })
       .pipe(catchError((error) => this.handleError(error)));
