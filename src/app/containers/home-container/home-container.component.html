@@ -1,5 +1,5 @@
 <app-main-layout>
-  <app-navbar-block select="[header]">
+  <app-navbar-block header>
     <li>
       <app-button-element
         (activateButtonEvent)="closeSession($event)"
@@ -7,4 +7,5 @@
       />
     </li>
   </app-navbar-block>
+  <app-home-menu main />
 </app-main-layout>

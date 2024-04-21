@@ -5,11 +5,17 @@ import { ButtonElementComponent } from '../../ui/elements/button-element/button-
 import { Observable } from 'rxjs';
 import { ISignupModel } from '../../core/models/signup.model';
 import { HomeContainerFacade } from './home-container.facade';
+import { HomeMenuComponent } from '../../ui/blocks/home-menu/home-menu.component';
 
 @Component({
   selector: 'app-home-container',
   standalone: true,
-  imports: [MainLayoutComponent, NavbarBlockComponent, ButtonElementComponent],
+  imports: [
+    MainLayoutComponent,
+    NavbarBlockComponent,
+    ButtonElementComponent,
+    HomeMenuComponent,
+  ],
   templateUrl: './home-container.component.html',
 })
 export class HomeContainerComponent {
