@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-menu',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home-menu.component.html',
-  styleUrl: './home-menu.component.css'
+  styleUrl: './home-menu.component.css',
 })
-export class HomeMenuComponent {
-
-}
+export class HomeMenuComponent {}

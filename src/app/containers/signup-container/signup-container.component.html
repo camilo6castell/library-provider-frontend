@@ -1,7 +1,7 @@
 <app-main-layout>
-  <app-navbar-block slot="[header]"> </app-navbar-block>
+  <app-navbar-block header> </app-navbar-block>
   <app-signup-form
     (newUserEvent)="submitNewUser($event)"
-    slot="[main]"
+    main
   ></app-signup-form>
 </app-main-layout>
