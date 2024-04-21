@@ -30,7 +30,12 @@ export class LoginContainerFacade {
     this.subscriptions.add(
       this.userService
         .loginUserService(loggedUser)
-        .pipe(tap(this.appState.user.user.set.bind(this)))
+        .pipe(
+          tap(() => {
+            this.appState.user.user.set.bind(this);
+            console.log('que es esto: ', this);
+          })
+        )
         .subscribe(
           () => {
             this.router.navigate(['/home']);

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IUserModel } from '../models/signup.model';
+import { ISignupModel } from '../models/signup.model';
 import { StateFactory } from './factory.state';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserState {
-  private user$: BehaviorSubject<IUserModel> = new BehaviorSubject(null);
+  private user$: BehaviorSubject<ISignupModel> = new BehaviorSubject(null);
   //   private currentUser$: BehaviorSubject<IUserModel> = new BehaviorSubject(null);
 
   constructor(private readonly factory: StateFactory) {}

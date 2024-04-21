@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { IUserModel } from '../../../core/models/signup.model';
+import { ISignupModel } from '../../../core/models/signup.model';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,8 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class SignupFormComponent {
   // @Output() userModel: IUserModel = {} as IUserModel;
-  @Output() newUserEvent = new EventEmitter<IUserModel>();
-  auxNewUser: IUserModel = {} as IUserModel;
+  @Output() newUserEvent = new EventEmitter<ISignupModel>();
+  // auxNewUser: ISignupModel = {} as ISignupModel;
 
   signupForm: FormGroup;
 
@@ -33,9 +33,8 @@ export class SignupFormComponent {
 
   submitForm() {
     if (this.signupForm.valid) {
-      this.auxNewUser = this.signupForm.value;
       // this.newUser = this.signupForm.value;
-      this.newUserEvent.emit(this.auxNewUser);
+      this.newUserEvent.emit(this.signupForm.value);
       // console.log('Form submitted!', this.userModel);
       // Send data to backend here
     } else {

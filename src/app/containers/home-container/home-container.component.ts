@@ -3,7 +3,7 @@ import { MainLayoutComponent } from '../../ui/layouts/main-layout/main-layout.co
 import { NavbarBlockComponent } from '../../ui/blocks/navbar-block/navbar-block.component';
 import { ButtonElementComponent } from '../../ui/elements/button-element/button-element.component';
 import { Observable } from 'rxjs';
-import { IUserModel } from '../../core/models/signup.model';
+import { ISignupModel } from '../../core/models/signup.model';
 import { HomeContainerFacade } from './home-container.facade';
 
 @Component({
@@ -13,7 +13,7 @@ import { HomeContainerFacade } from './home-container.facade';
   templateUrl: './home-container.component.html',
 })
 export class HomeContainerComponent implements OnInit, OnDestroy {
-  public user$: Observable<IUserModel>;
+  public user$: Observable<ISignupModel>;
 
   constructor(private readonly homeContainerFacade: HomeContainerFacade) {}
 

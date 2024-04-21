@@ -1,7 +1,7 @@
 import { Observable, Subscription, tap } from 'rxjs';
 import { AppState } from '../../core/state/app.state';
 import { UserService } from '../../core/services/user/user.service';
-import { IUserModel } from '../../core/models/signup.model';
+import { ISignupModel } from '../../core/models/signup.model';
 
 export class HomeContainerFacade {
   private subscriptions: Subscription;
@@ -12,7 +12,7 @@ export class HomeContainerFacade {
   ) {}
 
   // region observables
-  user$(): Observable<IUserModel> {
+  user$(): Observable<ISignupModel> {
     return this.appState.user.user.$();
   }
   //#endregion
