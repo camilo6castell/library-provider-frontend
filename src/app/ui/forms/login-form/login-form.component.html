@@ -1,20 +1,20 @@
-<form>
+<form [formGroup]="loginForm" (ngSubmit)="submitForm()">
   <h2>Login</h2>
-  <label for="username">Username</label>
+  <label for="username">Email</label>
   <input
-    type="text"
-    id="username"
-    name="username"
+    type="email"
+    id="email"
+    formControlName="email"
     required
-    autocomplete="username"
+    autocomplete="email"
   />
   <label for="password">Password</label>
   <input
     type="password"
     id="password"
-    name="password"
+    formControlName="password"
     required
-    autocomplete="current-password"
+    autocomplete="new-password"
   />
   <button type="submit">Login</button>
   <a routerLink="/index/signup">signup</a>

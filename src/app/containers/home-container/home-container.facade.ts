@@ -1,7 +1,7 @@
 import { Observable, Subscription, tap } from 'rxjs';
 import { AppState } from '../../core/state/app.state';
 import { UserService } from '../../core/services/user/user.service';
-import { IUserModel } from '../../core/models/user.model';
+import { IUserModel } from '../../core/models/signup.model';
 
 export class HomeContainerFacade {
   private subscriptions: Subscription;

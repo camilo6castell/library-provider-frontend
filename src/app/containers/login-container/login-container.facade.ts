@@ -1,14 +1,14 @@
 import { Subscription, tap } from 'rxjs';
 import { AppState } from '../../core/state/app.state';
 import { UserService } from '../../core/services/user/user.service';
-import { ISignupModel } from '../../core/models/signup.model';
+import { ILoginModel } from '../../core/models/login.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SignupContainerFacade {
+export class LoginContainerFacade {
   private subscriptions: Subscription;
 
   constructor(
@@ -26,21 +26,19 @@ export class SignupContainerFacade {
     this.subscriptions.unsubscribe();
   }
 
-  createUserFacadeService(newUser: ISignupModel): void {
+  loginUserFacadeService(loggedUser: ILoginModel): void {
     this.subscriptions.add(
       this.userService
-        .registerUserService(newUser)
-        // .pipe(tap(this.appState.user.user.set.bind(this)))
+        .loginUserService(loggedUser)
+        .pipe(tap(this.appState.user.user.set.bind(this)))
         .subscribe(
           () => {
-            // Registro exitoso, redireccionar a home-component
-            alert('Ahora puedes iniciar sesión.');
-            this.router.navigate(['/login']);
+            this.router.navigate(['/home']);
           },
           (error) => {
             // Error al registrar, mostrar alerta
-            console.error('Error al registrar usuario:', error);
-            alert('Error al registrar usuario. Inténtalo de nuevo.');
+            console.error('Error al iniciar sesión:', error);
+            alert('Error al iniciar sesión.');
           }
         )
     );

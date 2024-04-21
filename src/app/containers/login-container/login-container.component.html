@@ -1,0 +1,7 @@
+<app-main-layout>
+  <app-navbar-block slot="[header]"> </app-navbar-block>
+  <app-login-form
+    (newLoginEvent)="submitNewUser($event)"
+    slot="[main]"
+  ></app-login-form>
+</app-main-layout>

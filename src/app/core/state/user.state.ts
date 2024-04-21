@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IUserModel } from '../models/user.model';
+import { IUserModel } from '../models/signup.model';
 import { StateFactory } from './factory.state';
 
 @Injectable({

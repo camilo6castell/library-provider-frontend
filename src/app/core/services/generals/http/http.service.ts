@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 import { ErrorsService } from '../errors/errors.service';
 import { StorageService } from '../storage/storage.service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { IUserModel } from '../../../models/user.model';
+import { ISignupModel } from '../../../models/signup.model';
+import { ILoginModel } from '../../../models/login.model';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,7 @@ export class HttpService {
       .append('Authorization', `Bearer ${this.token}`);
   }
 
-  get headerRegister(): HttpHeaders {
+  get headerInitial(): HttpHeaders {
     return new HttpHeaders().append('Content-type', 'application/json');
   }
 
@@ -50,23 +51,10 @@ export class HttpService {
       .pipe(catchError((error) => this.handleError(error)));
   }
 
-  // post<T>(url: string, body: string): Observable<T> {
-  //   return this.httpClient
-  //     .post<T>(url, body, { headers: this.header })
-  //     .pipe(catchError((error) => this.handleError(error)));
-  // }
-
-  postServiceCreateNewUser<T>(url: string, body: IUserModel): Observable<T> {
+  post<T>(url: string, body: string): Observable<T> {
     return this.httpClient
-      .post<T>(url, body, { headers: this.headerRegister })
-      .pipe(
-        tap((response: any) => {
-          if (response.token) {
-            this.token = response.token;
-          }
-        }),
-        catchError((error) => this.handleError(error))
-      );
+      .post<T>(url, body, { headers: this.header })
+      .pipe(catchError((error) => this.handleError(error)));
   }
 
   put<T>(url: string, body: string): Observable<T> {
@@ -79,5 +67,45 @@ export class HttpService {
     return this.httpClient
       .delete<T>(url, { headers: this.header })
       .pipe(catchError((error) => this.handleError(error)));
+  }
+
+  // MINE
+  // postServiceCreateNewUser<T>(url: string, body: IUserModel): Observable<T> {
+  //   return this.httpClient
+  //     .post<T>(url, body, { headers: this.headerRegister })
+  //     .pipe(
+  //       tap((response: any) => {
+  //         if (response.token) {
+  //           this.token = response.token;
+  //         }
+  //       }),
+  //       catchError((error) => this.handleError(error))
+  //     );
+  // }
+
+  //updated
+  postServiceCreateNewUser<T>(url: string, body: ISignupModel): Observable<T> {
+    return this.httpClient
+      .post<T>(url, body, { headers: this.headerInitial })
+      .pipe(
+        // tap((response: any) => {
+        //   if (response.succes) {
+        //     this.token = response.token;
+        //   }
+        // }),
+        catchError(this.handleError)
+      );
+  }
+  postServiceLoginUser<T>(url: string, body: ILoginModel): Observable<T> {
+    return this.httpClient
+      .post<T>(url, body, { headers: this.headerInitial })
+      .pipe(
+        tap((response: any) => {
+          if (response.token) {
+            this.token = response.token;
+          }
+        }),
+        catchError(this.handleError)
+      );
   }
 }

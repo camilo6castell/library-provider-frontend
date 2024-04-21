@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { IUserModel } from '../../../core/models/user.model';
+import { IUserModel } from '../../../core/models/signup.model';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ApiToUserMApper } from '../../../core/mappers/api-to-user.mapper';
 
 @Component({
   selector: 'app-signup-form',

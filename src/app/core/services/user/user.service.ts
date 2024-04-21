@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '../generals/http/http.service';
 import { ApiToUserMApper } from '../../mappers/api-to-user.mapper';
 import { Observable } from 'rxjs';
-import { IUserModel } from '../../models/user.model';
+import { ISignupModel } from '../../models/signup.model';
 import { URL_RESOURCES } from '../../resources/url.resources';
+import { ILoginModel } from '../../models/login.model';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +20,12 @@ export class UserService {
   //     .get<IUserModel>(url)
   //     .pipe(map((result) => this.apiToUserMapper.map(result)));
   // }
-  registerUserService(body: IUserModel): Observable<any> {
+  registerUserService(body: ISignupModel): Observable<any> {
     const url = URL_RESOURCES.userSignUp;
     return this.httpService.postServiceCreateNewUser(url, body);
+  }
+  loginUserService(body: ILoginModel): Observable<any> {
+    const url = URL_RESOURCES.userSignUp;
+    return this.httpService.postServiceLoginUser(url, body);
   }
 }

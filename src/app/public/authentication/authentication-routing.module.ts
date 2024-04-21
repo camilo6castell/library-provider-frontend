@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupContainerComponent } from '../../containers/signup-container/signup-container.component';
-import { LoginFormComponent } from '../../ui/forms/login-form/login-form.component';
-import { SignupFormComponent } from '../../ui/forms/signup-form/signup-form.component';
+import { LoginContainerComponent } from '../../containers/login-container/login-container.component';
 
 const routes: Routes = [
   {
@@ -11,8 +10,8 @@ const routes: Routes = [
     redirectTo: 'login',
   },
   {
-    path: '',
-    component: SignupContainerComponent,
+    path: 'login',
+    component: LoginContainerComponent,
     // children: [
     //   {
     //     path: 'login',
@@ -23,6 +22,10 @@ const routes: Routes = [
     //     component: SignupFormComponent,
     //   },
     // ],
+  },
+  {
+    path: 'register',
+    component: SignupContainerComponent,
   },
 ];
 
