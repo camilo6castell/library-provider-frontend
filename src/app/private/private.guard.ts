@@ -42,7 +42,7 @@ export const privateGuard: CanActivateFn = (
   if (tokenValue) {
     return true;
   } else {
-    console.log('denegado');
+    // console.log('denegado');
     return inject(Router).createUrlTree(['/', 'index']);
   }
 };

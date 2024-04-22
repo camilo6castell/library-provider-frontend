@@ -21,9 +21,7 @@ export const authenticationGuardGuard: CanActivateFn = (
   // const currentUser = inject(Router).createUrlTree(['/', 'index']);
   // Verificar si el valor del servicio estático coincide con 'TOKEN'
   const tokenValue = StorageService.getToken('TOKEN'); // Suponiendo que 'getToken' es un método para obtener el valor
-  console.log(tokenValue);
   if (!tokenValue) {
-    console.log(tokenValue);
     return true;
   } else {
     console.log('denegado, index a home');
