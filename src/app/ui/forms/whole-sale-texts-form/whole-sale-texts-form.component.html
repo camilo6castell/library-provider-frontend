@@ -1,0 +1,13 @@
+<form [formGroup]="quoteForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="textObjects">
+    @for(text of textObjects; track text.id){
+
+    <div>
+      <label>{{ text.title }} - {{ text.basePrice }}</label>
+      <input type="number" formControlName="quantity" placeholder="Cantidad" />
+    </div>
+
+    }
+  </div>
+  <button type="submit">Crear cotización</button>
+</form>

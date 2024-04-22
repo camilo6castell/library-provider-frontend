@@ -6,6 +6,7 @@ import { ISignupModel } from '../../models/signup.model';
 import { URL_RESOURCES } from '../../resources/url.resources';
 import { ILoginModel } from '../../models/login.model';
 import { ISaveAndQuoteTexModel } from '../../models/save-and-quote-text.model';
+import { IGetStockTextsModel } from '../../models/get-stock-texts.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,12 +28,15 @@ export class UserService {
     return this.httpService.postServiceCreateNewUser(url, body);
   }
   loginUserService(body: ILoginModel): Observable<any> {
-    console.log('loginUserService', body);
     const url = URL_RESOURCES.userLogIn;
     return this.httpService.postServiceLoginUser(url, body);
   }
   saveAndQuoteTextService(body: ISaveAndQuoteTexModel): Observable<any> {
     const url = URL_RESOURCES.saveAndQuoteText;
+    return this.httpService.post(url, body);
+  }
+  getStockTextsService(body: IGetStockTextsModel): Observable<any> {
+    const url = URL_RESOURCES.getStockTexts;
     return this.httpService.post(url, body);
   }
 }
