@@ -9,6 +9,7 @@ import { ITextModel } from '../../core/models/text.model';
 import { AsyncPipe } from '@angular/common';
 import { StorageService } from '../../core/services/generals/storage/storage.service';
 import { IItemTextBatchModel } from '../../core/models/item-text-batch.model';
+import { ResultBlockComponent } from '../../ui/blocks/result-block/result-block.component';
 
 @Component({
   selector: 'app-whole-sale-texts-container',
@@ -18,11 +19,17 @@ import { IItemTextBatchModel } from '../../core/models/item-text-batch.model';
     NavbarBlockComponent,
     ButtonElementComponent,
     WholeSaleTextsFormComponent,
+    ResultBlockComponent,
     AsyncPipe,
   ],
   templateUrl: './whole-sale-texts-container.component.html',
 })
 export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
+  booksQuote: any[];
+  novelsQuote: any[];
+  summary: any = [];
+  isResult: string = 'none';
+
   public stockTexts: ITextModel[] = this.storageService.get('textsStock');
 
   constructor(
@@ -43,10 +50,16 @@ export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
     books: IItemTextBatchModel[];
     novels: IItemTextBatchModel[];
   }) {
+    // console.log(wholeSaleBatchs.books, wholeSaleBatchs.novels);
+
+    this.isResult = 'contents';
     this.wholeSaleTextsFacade.createWholeSaleTextsFacadeService({
       books: wholeSaleBatchs.books,
       novels: wholeSaleBatchs.novels,
     });
+    this.booksQuote = this.storageService.get('booksQuote');
+    this.novelsQuote = this.storageService.get('novelsQuote');
+    this.summary = this.storageService.get('summary');
   }
 
   closeSession(closeSession: Boolean) {

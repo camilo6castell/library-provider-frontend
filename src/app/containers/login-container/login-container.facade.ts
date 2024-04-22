@@ -34,7 +34,6 @@ export class LoginContainerFacade {
         .loginUserService(loggedUser)
         .pipe(
           tap((data: any) => {
-            console.log('LOGIN FACADE SERIVE', data);
             this.storageService.set('TOKEN', data.token);
             // this.userService.isAuthenticated = true;
             this.router.navigate(['/home']);

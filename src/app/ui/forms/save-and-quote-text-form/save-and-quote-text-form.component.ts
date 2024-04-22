@@ -33,9 +33,6 @@ export class SaveAndQuoteTextFormComponent {
     if (this.saveAndQuoteForm.valid) {
       newSaveandQuoteTextObject.text = this.saveAndQuoteForm.value;
       newSaveandQuoteTextObject.token = this.storageService.get('TOKEN');
-
-      console.log('****************', newSaveandQuoteTextObject);
-
       this.newSaveAndQuoteTexEvent.emit(newSaveandQuoteTextObject);
       // Realizar acciones cuando el formulario es válido
     } else {

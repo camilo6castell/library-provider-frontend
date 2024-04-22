@@ -35,19 +35,20 @@ export class SaveAndQuoteTextFecade {
   }
 
   saveAndQuoteTextFecadeService(body: ISaveAndQuoteTexModel): void {
-    this.userService.saveAndQuoteTextService(body).subscribe(
-      () => {
-        // Registro exitoso, redireccionar a home-component
-        alert('El texto ha sido agregado, serás redirigido al menú anterior');
-        this.router.navigate(['/home']);
-      },
-      (error) => {
-        // Error al registrar, mostrar alerta
-        console.error('Error al guardar el texto:', error);
-        alert('Error al guardar el texto. Serás redirigido al menú anterior.');
-        this.router.navigate(['/home']);
-      }
-    );
+    this.userService
+      .saveAndQuoteTextService(body)
+      .pipe(
+        tap((data) => {
+          console.log('saveandquote new', data);
+          alert(
+            `El texto ha sido agregado, serás redirigido al menú anterior: cotización: ${JSON.stringify(
+              data
+            )}`
+          );
+          this.router.navigate(['/home']);
+        })
+      )
+      .subscribe();
   }
 
   deleteToken(): void {
