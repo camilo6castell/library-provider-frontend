@@ -55,12 +55,10 @@ export class wholeSaleTextsFacade {
       this.userService
         .getStockTextsService({ getStock: true })
         .pipe(
-          tap(
-            (data) => this.appState.user.stockTexts.set(data.textsStock)
-            // (data) => {
-            // this.appState.user.stockTexts.set(data.textsStock);
-            // console.log(data.textsStock);}
-          )
+          tap((data) => {
+            this.appState.user.stockTexts.set(data.textsStock);
+            console.log(data.textsStock);
+          })
         )
         .subscribe()
     );
