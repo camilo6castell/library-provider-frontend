@@ -9,6 +9,7 @@ import {
 import { IItemTextBatchModel } from '../../../core/models/item-text-batch.model';
 import { ITextModel } from '../../../core/models/text.model';
 import { AsyncPipe } from '@angular/common';
+import { StorageService } from '../../../core/services/generals/storage/storage.service';
 
 @Component({
   selector: 'app-whole-sale-texts-form',
@@ -47,56 +48,25 @@ export class WholeSaleTextsFormComponent {
     const books: IItemTextBatchModel[] = [];
     const novels: IItemTextBatchModel[] = [];
 
-    this.texts.forEach((text) => {
-      var indexOf = this.texts.indexOf(text);
-      const control = this.textForm.get(`text_${indexOf + 1}`);
+    this.texts.forEach((text, index) => {
+      const control = this.textForm.get(`text_${index + 1}`);
       const quantity = control.value;
+      var auxIndex = index;
+      if (index > this.texts.length) {
+        auxIndex = -this.texts.length;
+      }
       if (quantity > 0) {
-        const item: IItemTextBatchModel = { index: text.id, quantity };
-        if (text.type === 0) {
+        const item: IItemTextBatchModel = { index: auxIndex + 1, quantity };
+        if (text.type === 'NOVEL') {
           novels.push(item);
-        } else if (text.type === 1) {
+        } else if (text.type === 'BOOK') {
           books.push(item);
         }
       }
     });
 
+    console.log('resultado form from wholesale:', books, novels);
+
     this.submitForm.emit({ books, novels });
   }
-
-  // @Input() textObjects: ITextModel[];
-  // @Output() createQuote = new EventEmitter<{
-  //   books: IItemTextBatchModel[];
-  //   novels: IItemTextBatchModel[];
-  // }>();
-
-  // quoteForm: FormGroup;
-
-  // constructor(private formBuilder: FormBuilder) {
-  //   this.quoteForm = this.formBuilder.group({
-  //     textObjects: this.formBuilder.array([]),
-  //   });
-  // }
-
-  // onSubmit() {
-  //   const books: IItemTextBatchModel[] = [];
-  //   const novels: IItemTextBatchModel[] = [];
-
-  //   const textObjectsFormArray = this.quoteForm.get('textObjects') as FormArray;
-
-  //   textObjectsFormArray.controls.forEach((control: FormGroup) => {
-  //     const quantity = control.get('quantity').value;
-  //     const type = control.get('type').value; // Asegúrate de tener un control 'type' en tu formulario
-
-  //     if (quantity > 0) {
-  //       if (type === 0) {
-  //         books.push({ index: control.get('id').value, quantity });
-  //       } else if (type === 1) {
-  //         novels.push({ index: control.get('id').value, quantity });
-  //       }
-  //     }
-  //   });
-
-  //   this.createQuote.emit({ books, novels });
-  // }
 }

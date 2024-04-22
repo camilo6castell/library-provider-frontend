@@ -7,6 +7,8 @@ import { wholeSaleTextsFacade } from './whole-sale-texts.facade';
 import { Observable } from 'rxjs';
 import { ITextModel } from '../../core/models/text.model';
 import { AsyncPipe } from '@angular/common';
+import { StorageService } from '../../core/services/generals/storage/storage.service';
+import { IItemTextBatchModel } from '../../core/models/item-text-batch.model';
 
 @Component({
   selector: 'app-whole-sale-texts-container',
@@ -21,13 +23,15 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './whole-sale-texts-container.component.html',
 })
 export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
-  public stockTexts$: Observable<ITextModel[]>;
+  public stockTexts: ITextModel[] = this.storageService.get('textsStock');
 
-  constructor(private readonly wholeSaleTextsFacade: wholeSaleTextsFacade) {}
+  constructor(
+    private readonly wholeSaleTextsFacade: wholeSaleTextsFacade,
+    private storageService: StorageService
+  ) {}
   ngOnInit(): void {
     this.wholeSaleTextsFacade.initSubsciptions();
-    this.wholeSaleTextsFacade.getStockTexts();
-    this.initializeSubscriptions();
+    // this.initializeSubscriptions();
   }
   ngOnDestroy(): void {
     this.wholeSaleTextsFacade.destroySubscriptions();
@@ -35,13 +39,23 @@ export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
 
   // MINE
 
+  createWholeSaleTextsListener(wholeSaleBatchs: {
+    books: IItemTextBatchModel[];
+    novels: IItemTextBatchModel[];
+  }) {
+    this.wholeSaleTextsFacade.createWholeSaleTextsFacadeService({
+      books: wholeSaleBatchs.books,
+      novels: wholeSaleBatchs.novels,
+    });
+  }
+
   closeSession(closeSession: Boolean) {
     if (closeSession) {
       this.wholeSaleTextsFacade.deleteToken();
     }
   }
 
-  private initializeSubscriptions(): void {
-    this.stockTexts$ = this.wholeSaleTextsFacade.stockTexts$();
-  }
+  // private initializeSubscriptions(): void {
+  //   this.stockTexts$ = this.wholeSaleTextsFacade.stockTexts$();
+  // }
 }

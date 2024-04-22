@@ -2,10 +2,7 @@
   @for(text of texts; track $index){
 
   <div>
-    <label
-      >{{ text.type === 0 ? "NOVELA" : "LIBRO" }} - {{ text.title }} -
-      {{ text.basePrice }}</label
-    >
+    <label>{{ text.type }} - {{ text.title }} - {{ text.basePrice }}</label>
     <input
       type="number"
       [formControlName]="'text_' + ($index + 1)"

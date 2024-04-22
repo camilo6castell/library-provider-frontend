@@ -5,5 +5,7 @@ export const URL_RESOURCES = {
   userLogIn: `${environment.apiUrl}:${environment.apiPort}/${environment.apiVer}/authenticate`,
   saveAndQuoteText: `${environment.apiUrl}:${environment.apiPort}/SaveText`,
   getStockTexts: `${environment.apiUrl}:${environment.apiPort}/GetStockTexts`,
+  wholeSaleTexts: `${environment.apiUrl}:${environment.apiPort}/CalculateWholesaleQuote`,
+  budgetSaleTexts: `${environment.apiUrl}:${environment.apiPort}/CalculateBudgetSaleQuote`,
   // userParams: (params: string) => `${environment.apiUrl}/${params}`,
 };

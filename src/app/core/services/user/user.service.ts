@@ -7,6 +7,7 @@ import { URL_RESOURCES } from '../../resources/url.resources';
 import { ILoginModel } from '../../models/login.model';
 import { ISaveAndQuoteTexModel } from '../../models/save-and-quote-text.model';
 import { IGetStockTextsModel } from '../../models/get-stock-texts.model';
+import { IItemTextBatchModel } from '../../models/item-text-batch.model';
 
 @Injectable({
   providedIn: 'root',
@@ -38,5 +39,17 @@ export class UserService {
   getStockTextsService(body: IGetStockTextsModel): Observable<any> {
     const url = URL_RESOURCES.getStockTexts;
     return this.httpService.post(url, body);
+  }
+  wholeSaleTextsService(body: {
+    bookIndicesAndQuantity: IItemTextBatchModel[];
+    novelIndicesAndQuantity: IItemTextBatchModel[];
+    token: string;
+  }): Observable<any> {
+    const url = URL_RESOURCES.wholeSaleTexts;
+    return this.httpService.post(url, {
+      bookIndicesAndQuantity: body.bookIndicesAndQuantity,
+      novelIndicesAndQuantity: body.novelIndicesAndQuantity,
+      token: body.token,
+    });
   }
 }

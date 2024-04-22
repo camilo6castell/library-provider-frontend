@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { IGetStockTextsModel } from '../../core/models/get-stock-texts.model';
 import { ITextModel } from '../../core/models/text.model';
+import { IItemTextBatchModel } from '../../core/models/item-text-batch.model';
 
 @Injectable({
   providedIn: 'root',
@@ -50,14 +51,23 @@ export class wholeSaleTextsFacade {
 
   //
 
-  getStockTexts(): void {
+  createWholeSaleTextsFacadeService(body: {
+    books: IItemTextBatchModel[];
+    novels: IItemTextBatchModel[];
+  }): void {
     this.subscriptions.add(
       this.userService
-        .getStockTextsService({ getStock: true })
+        .wholeSaleTextsService({
+          bookIndicesAndQuantity: body.books,
+          novelIndicesAndQuantity: body.novels,
+          token: `Bearer ${this.storageService.get('TOKEN')}`,
+        })
         .pipe(
           tap((data) => {
-            this.appState.user.stockTexts.set(data.textsStock);
-            console.log(data.textsStock);
+            alert(JSON.stringify(data.booksQuote));
+            alert(JSON.stringify(data.novelsQuote));
+            alert(JSON.stringify(data.summary));
+            // console.log(data.booksQuote, data.novelsQuote, data.summary);
           })
         )
         .subscribe()
