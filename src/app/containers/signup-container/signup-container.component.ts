@@ -4,6 +4,7 @@ import { NavbarBlockComponent } from '../../ui/blocks/navbar-block/navbar-block.
 import { SignupFormComponent } from '../../ui/forms/signup-form/signup-form.component';
 import { ISignupModel } from '../../core/models/signup.model';
 import { SignupContainerFacade } from './signup-container.facade';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-index-container',

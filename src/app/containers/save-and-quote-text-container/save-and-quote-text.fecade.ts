@@ -51,6 +51,14 @@ export class SaveAndQuoteTextFecade {
       .subscribe();
   }
 
+  isUser(): Boolean {
+    if (this.storageService.get('TOKEN')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   deleteToken(): void {
     // this.userService.isAuthenticated = false;
     this.storageService.remove('TOKEN');

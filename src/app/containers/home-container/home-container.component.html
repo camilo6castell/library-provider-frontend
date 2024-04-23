@@ -1,2 +1,5 @@
-<app-navbar-block (closeSessionEvent)="closeSession($event)" />
+<app-navbar-block
+  (closeSessionEvent)="closeSession($event)"
+  [isUser]="isUser"
+/>
 <app-home-menu />

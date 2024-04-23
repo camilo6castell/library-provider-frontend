@@ -36,5 +36,6 @@ html {
 body {
   margin: 0;
   width: 100%;
+  height: fit-content;
   z-index: -3;
 }

@@ -29,6 +29,14 @@ export class HomeContainerFacade {
     this.subscriptions = new Subscription();
   }
 
+  isUser(): Boolean {
+    if (this.storageService.get('TOKEN')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   destroySubscriptions(): void {
     this.subscriptions.unsubscribe();
   }

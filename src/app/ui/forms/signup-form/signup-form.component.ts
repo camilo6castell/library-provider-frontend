@@ -3,11 +3,12 @@ import { ISignupModel } from '../../../core/models/signup.model';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './signup-form.component.html',
   styleUrl: './signup-form.component.css',
 })

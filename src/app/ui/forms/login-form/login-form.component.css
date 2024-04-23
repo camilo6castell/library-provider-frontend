@@ -1,4 +1,4 @@
-.login-form {
+.form {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -6,19 +6,19 @@
   width: 50%;
 
   margin: auto;
-  .login-form__title {
+  .form__title {
     margin-bottom: 2rem;
 
     font-size: 2rem;
     font-weight: 600;
   }
-  .login-form__label {
+  .form__label {
     margin-bottom: 0.5rem;
 
     font-size: 1.2rem;
     font-weight: 500;
   }
-  .login-form__input {
+  .form__input {
     margin-bottom: 1rem;
     padding: 0.5rem;
     font-weight: 600;
@@ -27,7 +27,7 @@
 
     background-color: rgba(32, 25, 32, 0.267);
   }
-  .login-form__button {
+  .form__button {
     margin-block: 1rem;
     font-weight: 800;
     width: fit-content;
@@ -37,16 +37,16 @@
 
     align-self: center;
   }
-  .login-form__button:hover {
+  .form__button:hover {
     background-color: rgb(247, 187, 242);
   }
-  .login-form__link-container {
+  .form__link-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-block: 0.5rem;
-    .login-form__link-container__link {
+    .form__link-container__link {
       color: rgb(247, 187, 242);
       font-size: 1.2rem;
       font-weight: 800;
@@ -55,7 +55,7 @@
 }
 
 @media (width < 600px) {
-  .login-form {
+  .form {
     width: 95%;
   }
 }

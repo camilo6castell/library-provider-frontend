@@ -1,7 +1,4 @@
-<app-main-layout>
-  <app-navbar-block header> </app-navbar-block>
-  <app-save-and-quote-text-form
-    main
-    (newSaveAndQuoteTexEvent)="saveAndQuoteTextListener($event)"
-  ></app-save-and-quote-text-form>
-</app-main-layout>
+<app-navbar-block [isUser]="isUser" />
+<app-save-and-quote-text-form
+  (newSaveAndQuoteTexEvent)="saveAndQuoteTextListener($event)"
+/>

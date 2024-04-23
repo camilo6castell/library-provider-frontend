@@ -1,0 +1,14 @@
+.button {
+  /* margin-block: 1rem; */
+  font-weight: 800;
+  width: fit-content;
+  padding: 0.5rem;
+  background-color: rgb(85, 64, 83);
+  transition: background-color 0.5s ease-in-out;
+
+  /* align-self: center; */
+}
+.button:hover {
+  background-color: rgb(247, 187, 242);
+  text-shadow: -1px 0px 11px rgba(0, 0, 0, 0.822);
+}

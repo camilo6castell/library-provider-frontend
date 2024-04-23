@@ -13,6 +13,11 @@ const routes: Routes = [
     canActivate: [privateGuard],
     children: [
       {
+        path: '',
+        component: HomeContainerComponent,
+        canActivate: [privateGuard],
+      },
+      {
         path: 'save-and-quote-text',
         component: SaveAndQuoteTextContainerComponent,
         canActivate: [privateGuard],

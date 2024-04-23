@@ -11,7 +11,6 @@ import { StorageService } from '../../core/services/generals/storage/storage.ser
   selector: 'app-save-and-quote-text-container',
   standalone: true,
   imports: [
-    MainLayoutComponent,
     NavbarBlockComponent,
     ButtonElementComponent,
     SaveAndQuoteTextFormComponent,
@@ -19,6 +18,7 @@ import { StorageService } from '../../core/services/generals/storage/storage.ser
   templateUrl: './save-and-quote-text-container.component.html',
 })
 export class SaveAndQuoteTextContainerComponent {
+  isUser: Boolean;
   constructor(
     private readonly saveAndQuoteTextFacade: SaveAndQuoteTextFecade,
     private readonly storageService: StorageService
@@ -47,6 +47,7 @@ export class SaveAndQuoteTextContainerComponent {
   }
 
   ngOnInit(): void {
+    this.isUser = this.saveAndQuoteTextFacade.isUser();
     // this.facade.initSubsciptions();
     // this.facade.createUser(this.newUser);
     // console.log(localStorage.getItem('TOKEN'));
