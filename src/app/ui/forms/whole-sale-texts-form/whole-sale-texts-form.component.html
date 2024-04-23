@@ -1,16 +1,13 @@
 <form [formGroup]="textForm" (ngSubmit)="onSubmit()">
   @for(text of texts; track $index){
-
   <div>
     <label>{{ text.type }} - {{ text.title }} - {{ text.basePrice }}</label>
     <input
       type="number"
-      [formControlName]="'text_' + ($index + 1)"
+      [formControlName]="'text_' + $index"
       placeholder="Cantidad"
     />
   </div>
-
   }
-
   <button type="submit">Crear cotización</button>
 </form>

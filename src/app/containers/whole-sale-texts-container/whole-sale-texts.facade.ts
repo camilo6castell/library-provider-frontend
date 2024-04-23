@@ -65,9 +65,11 @@ export class wholeSaleTextsFacade {
         .pipe(
           tap((data) => {
             console.log(data);
-            this.storageService.set('booksQuote', data.booksQuote);
-            this.storageService.set('novelsQuote', data.booksQuote);
-            this.storageService.set('summary', data.summary);
+            this.storageService.set('resultWholesaleQuoteModal', {
+              booksQuote: data.booksQuote,
+              novelsQuote: data.booksQuote,
+              summary: data.summary,
+            });
             // alert(JSON.stringify(data.booksQuote));
             // alert(JSON.stringify(data.novelsQuote));
             // alert(JSON.stringify(data.summary));

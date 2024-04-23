@@ -38,25 +38,24 @@ export class WholeSaleTextsFormComponent {
   private initForm(): void {
     this.texts.forEach((text, index) => {
       this.textForm.addControl(
-        `text_${index + 1}`,
+        `text_${index}`,
         this.formBuilder.control('', Validators.min(1))
       );
     });
   }
+
+  // TEXTS RESULT
 
   onSubmit(): void {
     const books: IItemTextBatchModel[] = [];
     const novels: IItemTextBatchModel[] = [];
 
     this.texts.forEach((text, index) => {
-      const control = this.textForm.get(`text_${index + 1}`);
+      const control = this.textForm.get(`text_${index}`);
       const quantity = control.value;
-      var auxIndex = index;
-      if (index > this.texts.length) {
-        auxIndex = -this.texts.length;
-      }
+
       if (quantity > 0) {
-        const item: IItemTextBatchModel = { index: auxIndex + 1, quantity };
+        const item: IItemTextBatchModel = { index: index, quantity };
         if (text.type === 'NOVEL') {
           novels.push(item);
         } else if (text.type === 'BOOK') {
@@ -65,7 +64,7 @@ export class WholeSaleTextsFormComponent {
       }
     });
 
-    console.log('resultado form from wholesale:', books, novels);
+    // console.log('resultado form from wholesale:', books, novels);
 
     this.submitForm.emit({ books, novels });
   }

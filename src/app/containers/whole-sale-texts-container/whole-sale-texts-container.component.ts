@@ -10,6 +10,7 @@ import { AsyncPipe } from '@angular/common';
 import { StorageService } from '../../core/services/generals/storage/storage.service';
 import { IItemTextBatchModel } from '../../core/models/item-text-batch.model';
 import { ResultBlockComponent } from '../../ui/blocks/result-block/result-block.component';
+import { ModalBlockComponent } from '../../ui/blocks/modal-block/modal-block.component';
 
 @Component({
   selector: 'app-whole-sale-texts-container',
@@ -20,11 +21,13 @@ import { ResultBlockComponent } from '../../ui/blocks/result-block/result-block.
     ButtonElementComponent,
     WholeSaleTextsFormComponent,
     ResultBlockComponent,
+    ModalBlockComponent,
     AsyncPipe,
   ],
   templateUrl: './whole-sale-texts-container.component.html',
 })
 export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
+  public stockTexts: ITextModel[] = this.storageService.get('textsStock');
   // session
   isUser: Boolean;
   //
@@ -33,17 +36,18 @@ export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
   summary: any = [];
   isResult: string = 'none';
 
-  public stockTexts: ITextModel[] = this.storageService.get('textsStock');
-
   constructor(
     private readonly wholeSaleTextsFacade: wholeSaleTextsFacade,
     private storageService: StorageService
   ) {}
   ngOnInit(): void {
     this.isUser = this.wholeSaleTextsFacade.isUser();
+    this.wholeSaleTextsFacade.getStockTextsFecadeService();
     this.wholeSaleTextsFacade.initSubsciptions();
+
     // this.initializeSubscriptions();
   }
+
   ngOnDestroy(): void {
     this.wholeSaleTextsFacade.destroySubscriptions();
   }
@@ -64,12 +68,25 @@ export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
     this.booksQuote = this.storageService.get('booksQuote');
     this.novelsQuote = this.storageService.get('novelsQuote');
     this.summary = this.storageService.get('summary');
+
+    this.isModal = true;
+    this.dataWholesaleQuoteModal = this.storageService.get(
+      'resultWholesaleQuoteModal'
+    );
   }
 
   closeSession(closeSession: Boolean) {
     if (closeSession) {
       this.wholeSaleTextsFacade.deleteToken();
     }
+  }
+
+  // MODAL
+  isModal: boolean = false;
+  dataWholesaleQuoteModal: any = {};
+
+  closeModal(visible: boolean) {
+    this.isModal = visible;
   }
 
   // private initializeSubscriptions(): void {
