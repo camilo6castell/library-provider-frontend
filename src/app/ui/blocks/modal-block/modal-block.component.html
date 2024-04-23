@@ -1,0 +1,53 @@
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      @if (dataSave){
+      <article class="modal-save">
+        <h2 class="modal-save__element__title">
+          Texto guardado! acá está tu cotización:
+        </h2>
+        <div class="modal-save__element">
+          <span class="modal-save__element_label">Títle:</span>
+          <span class="modal-save__element_value">{{ dataSave.title }}</span>
+        </div>
+        <div class="modal-save__element">
+          <span class="modal-save__element_label">Type:</span>
+          <span class="modal-save__element_value">{{ dataSave.type }}</span>
+        </div>
+        <div class="modal-save__element">
+          <span class="modal-save__element_label">Price:</span
+          ><span class="modal-save__element_value">{{ dataSave.price }}</span>
+        </div>
+
+        <ul class="modal-save__element-discount">
+          @for (discount of dataSave.discounts; track $index) {
+          <h3 class="modal-save__element-discount__title">Discounts</h3>
+          <li class="modal-save__element">
+            <span class="modal-save__element-discount_label"
+              >{{ discount.concept }} </span
+            ><span class="modal-save__element_discount_value"
+              >{{ discount.percentage }}%</span
+            >
+          </li>
+          } @empty {
+          <h3 class="modal-save__element-discount__title">Discounts</h3>
+          <li class="modal-save__element">
+            <span class="modal-save__element-discount_label">None </span>
+          </li>
+          }
+        </ul>
+        <div class="modal-save__element">
+          <span class="modal-save__element_label">Total Price: </span
+          ><span class="modal-save__element_value">{{
+            dataSave.totalPrice
+          }}</span>
+        </div>
+      </article>
+      }
+
+      <div class="modal-footer">
+        <button class="modal__button" (click)="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

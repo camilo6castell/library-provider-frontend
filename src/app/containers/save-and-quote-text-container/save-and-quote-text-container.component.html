@@ -1,4 +1,10 @@
-<app-navbar-block [isUser]="isUser" />
+<app-navbar-block
+  [isUser]="isUser"
+  (closeSessionEvent)="closeSession($event)"
+/>
 <app-save-and-quote-text-form
   (newSaveAndQuoteTexEvent)="saveAndQuoteTextListener($event)"
 />
+@if (isModal){
+<app-modal-block (visible)="closeModal($event)" [dataSave]="dataModal" />
+}

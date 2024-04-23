@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ISaveAndQuoteTexModel } from '../../../core/models/save-and-quote-text.model';
 import { StorageService } from '../../../core/services/generals/storage/storage.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-save-and-quote-text-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './save-and-quote-text-form.component.html',
   styleUrl: './save-and-quote-text-form.component.css',
 })

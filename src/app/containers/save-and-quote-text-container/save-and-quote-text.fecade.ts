@@ -34,21 +34,18 @@ export class SaveAndQuoteTextFecade {
     this.subscriptions.unsubscribe();
   }
 
-  saveAndQuoteTextFecadeService(body: ISaveAndQuoteTexModel): void {
+  saveAndQuoteTextFecadeService(body: ISaveAndQuoteTexModel): any {
+    let auxData = {};
     this.userService
       .saveAndQuoteTextService(body)
       .pipe(
         tap((data) => {
-          console.log('saveandquote new', data);
-          alert(
-            `El texto ha sido agregado, serás redirigido al menú anterior: cotización: ${JSON.stringify(
-              data
-            )}`
-          );
-          this.router.navigate(['/home']);
+          this.storageService.set('resultSaveAndQuoteText', data);
         })
       )
       .subscribe();
+
+    return auxData;
   }
 
   isUser(): Boolean {

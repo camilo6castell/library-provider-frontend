@@ -77,4 +77,13 @@ export class wholeSaleTextsFacade {
         .subscribe()
     );
   }
+
+  //SESSION
+  isUser(): Boolean {
+    if (this.storageService.get('TOKEN')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

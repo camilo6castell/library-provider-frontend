@@ -25,6 +25,9 @@ import { ResultBlockComponent } from '../../ui/blocks/result-block/result-block.
   templateUrl: './whole-sale-texts-container.component.html',
 })
 export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
+  // session
+  isUser: Boolean;
+  //
   booksQuote: any[];
   novelsQuote: any[];
   summary: any = [];
@@ -37,6 +40,7 @@ export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
     private storageService: StorageService
   ) {}
   ngOnInit(): void {
+    this.isUser = this.wholeSaleTextsFacade.isUser();
     this.wholeSaleTextsFacade.initSubsciptions();
     // this.initializeSubscriptions();
   }
