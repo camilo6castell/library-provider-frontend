@@ -54,10 +54,4 @@ export class SaveAndQuoteTextContainerComponent {
   ngOnDestroy(): void {
     this.saveAndQuoteTextFacade.destroySubscriptions;
   }
-
-  closeSession(closeSession: Boolean) {
-    if (closeSession) {
-      this.saveAndQuoteTextFacade.deleteToken();
-    }
-  }
 }

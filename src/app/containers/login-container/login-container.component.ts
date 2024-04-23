@@ -4,13 +4,18 @@ import { NavbarBlockComponent } from '../../ui/blocks/navbar-block/navbar-block.
 import { LoginFormComponent } from '../../ui/forms/login-form/login-form.component';
 import { ILoginModel } from '../../core/models/login.model';
 import { LoginContainerFacade } from './login-container.facade';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-login-container',
   standalone: true,
-  imports: [MainLayoutComponent, NavbarBlockComponent, LoginFormComponent],
+  imports: [
+    RouterOutlet,
+    MainLayoutComponent,
+    NavbarBlockComponent,
+    LoginFormComponent,
+  ],
   templateUrl: './login-container.component.html',
-  styleUrl: './login-container.component.css',
 })
 export class LoginContainerComponent {
   // isLogin: ILoginModel;

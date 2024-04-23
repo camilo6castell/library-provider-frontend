@@ -1,21 +1,30 @@
-<form [formGroup]="loginForm" (ngSubmit)="submitForm()">
-  <h2>Login</h2>
-  <label for="username">Email</label>
+<form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="login-form">
+  <h2 class="login-form__title">Login</h2>
+  <label for="username" class="login-form__label">Email</label>
   <input
+    class="login-form__input"
     type="email"
     id="email"
     formControlName="email"
     required
     autocomplete="email"
   />
-  <label for="password">Password</label>
+  <label for="password" class="login-form__label">Password</label>
   <input
+    class="login-form__input"
     type="password"
     id="password"
     formControlName="password"
     required
     autocomplete="new-password"
   />
-  <button type="submit">Login</button>
-  <a routerLink="/index/signup">signup</a>
+  <button class="login-form__button" type="submit">Login</button>
+  <span class="login-form__link-container">
+    <span class="login-form__link-container__text"
+      >¿No tienes una cuenta?{{ "  " }}</span
+    >
+    <a class="login-form__link-container__link" routerLink="/index/signup"
+      >signup</a
+    >
+  </span>
 </form>

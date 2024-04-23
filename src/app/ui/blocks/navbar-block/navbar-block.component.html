@@ -1,8 +1,16 @@
-<nav>
-  <ul>
-    <li>
-      <h1>Texts provider!</h1>
+<nav class="nav-bar">
+  <ul class="nav-bar__container">
+    <li class="nav-bar__container-element">
+      <h1 class="nav-bar__container-element__title">Texts provider!</h1>
     </li>
-    <ng-content></ng-content>
+    @if (isUser){
+    <li class="nav-bar__container-element">
+      <app-button-element
+        class="nav-bar__container-element__button"
+        (activateButtonEvent)="closeSession($event)"
+        textButton="Cerrar sesión"
+      />
+    </li>
+    }
   </ul>
 </nav>

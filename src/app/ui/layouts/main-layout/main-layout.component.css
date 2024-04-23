@@ -1,16 +1,9 @@
-* {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+.main-layout {
+  width: 100dvw;
+  height: 100dvh;
 
-header {
-  margin: 2rem;
-}
-
-main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
 }

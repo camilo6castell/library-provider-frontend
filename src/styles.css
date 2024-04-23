@@ -1,5 +1,40 @@
 @import "./assets/css/reset.css";
+@import "./assets/css/keyframes.css";
+
+@font-face {
+  font-family: "Raleway";
+  src: url("./assets/fonts/Raleway-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Borel";
+  src: url("./assets/fonts/Borel-Regular.ttf");
+}
 
 :root {
   color-scheme: light dark;
+}
+
+html {
+  color: rgb(206, 206, 206);
+  text-shadow: -1px 0px 11px rgba(204, 204, 204, 0.6);
+  font-family: "Raleway";
+  text-wrap: pretty;
+
+  width: 100dvw;
+  height: fit-content;
+
+  background: linear-gradient(-45deg, #2a3742, #416063, #414141, #838383);
+  background-size: 800vw 800vh;
+  animation: gradient 15s ease infinite;
+
+  scroll-behavior: smooth;
+
+  z-index: -4;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  z-index: -3;
 }

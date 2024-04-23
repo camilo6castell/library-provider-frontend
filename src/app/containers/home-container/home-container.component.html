@@ -1,11 +1,2 @@
-<app-main-layout>
-  <app-navbar-block header>
-    <li>
-      <app-button-element
-        (activateButtonEvent)="closeSession($event)"
-        textButton="Cerrar sesión"
-      />
-    </li>
-  </app-navbar-block>
-  <app-home-menu main />
-</app-main-layout>
+<app-navbar-block (closeSessionEvent)="closeSession($event)" />
+<app-home-menu />

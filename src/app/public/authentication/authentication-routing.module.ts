@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SignupContainerComponent } from '../../containers/signup-container/signup-container.component';
 import { LoginContainerComponent } from '../../containers/login-container/login-container.component';
 import { authenticationGuardGuard } from './authentication-guard.guard';
+import { MainLayoutComponent } from '../../ui/layouts/main-layout/main-layout.component';
 
 const routes: Routes = [
   {
@@ -11,24 +12,19 @@ const routes: Routes = [
     redirectTo: 'login',
   },
   {
-    path: 'login',
-    component: LoginContainerComponent,
+    path: '',
+    component: MainLayoutComponent,
     canActivate: [authenticationGuardGuard],
-
-    // children: [
-    //   {
-    //     path: 'login',
-    //     component: LoginFormComponent,
-    //   },
-    //   {
-    //     path: 'signup',
-    //     component: SignupFormComponent,
-    //   },
-    // ],
-  },
-  {
-    path: 'signup',
-    component: SignupContainerComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginContainerComponent,
+      },
+      {
+        path: 'signup',
+        component: SignupContainerComponent,
+      },
+    ],
   },
 ];
 
