@@ -34,6 +34,7 @@ export class WholeSaleTextsFormComponent {
 
   ngOnInit(): void {
     this.initForm();
+    localStorage.removeItem('resultWholesaleQuoteModal');
   }
 
   private initForm(): void {

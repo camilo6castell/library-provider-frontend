@@ -7,7 +7,7 @@
   (submitForm)="createWholeSaleTextsListener($event)"
   [texts]="stockTexts"
 />
-@if (isModal){
+@if (isModal && dataWholesaleQuoteModal != undefined){
 <app-modal-block
   (visible)="closeModal($event)"
   [dataWholesaleQuoteModal]="dataWholesaleQuoteModal"

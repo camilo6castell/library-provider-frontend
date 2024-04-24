@@ -43,6 +43,109 @@
           }}</span>
         </div>
       </article>
+      } @else if (dataWholesaleQuoteModal) {
+      <h2 class="tables-title">Quotes</h2>
+      <div class="text-table">
+        <h3 class="text-table__tile">books</h3>
+
+        <table
+          *ngIf="dataWholesaleQuoteModal.booksQuote?.length > 0"
+          class="table-container"
+        >
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Discoount</th>
+              <th>total price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of dataWholesaleQuoteModal.booksQuote">
+              <td>{{ book.title }}</td>
+              <td>{{ book.price }}</td>
+              <td>
+                <ul *ngIf="book.discounts?.length > 0">
+                  <li *ngFor="let discount of book.discounts">
+                    {{ discount.concept }}: {{ discount.percentage }}%
+                  </li>
+                </ul>
+              </td>
+              <td>{{ book.totalPrice }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p *ngIf="dataWholesaleQuoteModal.booksQuote?.length === 0">
+          No book chosen.
+        </p>
+      </div>
+      <h3 class="text-table__tile">Novels</h3>
+      <table
+        *ngIf="dataWholesaleQuoteModal.novelsQuote?.length > 0"
+        class="table-container"
+      >
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Discoount</th>
+            <th>total price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let novel of dataWholesaleQuoteModal.novelsQuote">
+            <td>{{ novel.title }}</td>
+            <td>{{ novel.price }}</td>
+            <td>
+              <ul *ngIf="novel.discounts?.length > 0">
+                <li *ngFor="let discount of novel.discounts">
+                  {{ discount.concept }}: {{ discount.percentage }}%
+                </li>
+              </ul>
+            </td>
+            <td>{{ novel.totalPrice }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="dataWholesaleQuoteModal.novelsQuote?.length === 0">
+        No novels chosen.
+      </p>
+
+      <h3 class="tables-title">Summary</h3>
+
+      <table *ngIf="dataWholesaleQuoteModal?.summary" class="table-container">
+        <thead>
+          <tr>
+            <th>concept</th>
+            <th>value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Subtotal</td>
+            <td>{{ dataWholesaleQuoteModal?.summary?.subtotal }}</td>
+          </tr>
+          <tr *ngIf="dataWholesaleQuoteModal?.summary?.discounts?.length > 0">
+            <td>Discounts</td>
+            <td>
+              <ul>
+                <li
+                  *ngFor="
+                    let discount of dataWholesaleQuoteModal?.summary?.discounts
+                  "
+                >
+                  {{ discount.concept }}: {{ discount.percentage }}%
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>{{ dataWholesaleQuoteModal?.summary?.total }}</td>
+          </tr>
+        </tbody>
+      </table>
+
       }
 
       <div class="modal-footer">

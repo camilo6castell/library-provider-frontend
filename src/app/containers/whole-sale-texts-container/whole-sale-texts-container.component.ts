@@ -84,7 +84,7 @@ export class WholeSaleTextsContainerComponent implements OnInit, OnDestroy {
 
   // MODAL
   isModal: boolean = false;
-  dataWholesaleQuoteModal: any = {};
+  dataWholesaleQuoteModal: any = undefined;
 
   closeModal(visible: boolean) {
     this.isModal = visible;

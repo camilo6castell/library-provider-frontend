@@ -74,16 +74,16 @@ export class wholeSaleTextsFacade {
             console.log(data);
             this.storageService.set('resultWholesaleQuoteModal', {
               booksQuote: data.booksQuote,
-              novelsQuote: data.booksQuote,
+              novelsQuote: data.novelsQuote,
               summary: data.summary,
             });
-            alert(
-              JSON.stringify({
-                booksQuote: data.booksQuote,
-                novelsQuote: data.booksQuote,
-                summary: data.summary,
-              })
-            );
+            // alert(
+            //   JSON.stringify({
+            //     booksQuote: data.booksQuote,
+            //     novelsQuote: data.booksQuote,
+            //     summary: data.summary,
+            //   })
+            // );
             // alert(JSON.stringify(data.booksQuote));
             // alert(JSON.stringify(data.novelsQuote));
             // alert(JSON.stringify(data.summary));
