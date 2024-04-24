@@ -46,7 +46,14 @@ export class wholeSaleTextsFacade {
   }
 
   getStockTextsFecadeService(): void {
-    this.userService.getStockTextsService({ getStock: true }).subscribe();
+    this.userService
+      .getStockTextsService({ getStock: true })
+      .pipe(
+        tap((data: any) => {
+          this.storageService.set('textsStock', data.textsStock);
+        })
+      )
+      .subscribe();
   }
 
   //
@@ -70,6 +77,13 @@ export class wholeSaleTextsFacade {
               novelsQuote: data.booksQuote,
               summary: data.summary,
             });
+            alert(
+              JSON.stringify({
+                booksQuote: data.booksQuote,
+                novelsQuote: data.booksQuote,
+                summary: data.summary,
+              })
+            );
             // alert(JSON.stringify(data.booksQuote));
             // alert(JSON.stringify(data.novelsQuote));
             // alert(JSON.stringify(data.summary));

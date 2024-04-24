@@ -11,6 +11,7 @@ import { StorageService } from '../../core/services/generals/storage/storage.ser
 import { IItemTextBatchModel } from '../../core/models/item-text-batch.model';
 import { ResultBlockComponent } from '../../ui/blocks/result-block/result-block.component';
 import { ModalBlockComponent } from '../../ui/blocks/modal-block/modal-block.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-whole-sale-texts-container',

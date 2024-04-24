@@ -10,11 +10,12 @@ import { IItemTextBatchModel } from '../../../core/models/item-text-batch.model'
 import { ITextModel } from '../../../core/models/text.model';
 import { AsyncPipe } from '@angular/common';
 import { StorageService } from '../../../core/services/generals/storage/storage.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-whole-sale-texts-form',
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe],
+  imports: [RouterLink, ReactiveFormsModule, AsyncPipe],
   templateUrl: './whole-sale-texts-form.component.html',
   styleUrl: './whole-sale-texts-form.component.css',
 })
