@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResultBlockComponent } from './result-block.component';
+import { BudgetSaleFormComponent } from './budget-sale-form.component';
 
-describe('ResultBlockComponent', () => {
-  let component: ResultBlockComponent;
-  let fixture: ComponentFixture<ResultBlockComponent>;
+describe('BudgetSaleFormComponent', () => {
+  let component: BudgetSaleFormComponent;
+  let fixture: ComponentFixture<BudgetSaleFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ResultBlockComponent]
+      imports: [BudgetSaleFormComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ResultBlockComponent);
+    fixture = TestBed.createComponent(BudgetSaleFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

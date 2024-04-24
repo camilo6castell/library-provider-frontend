@@ -4,14 +4,13 @@ import { NavbarBlockComponent } from '../../ui/blocks/navbar-block/navbar-block.
 import { ButtonElementComponent } from '../../ui/elements/button-element/button-element.component';
 import { WholeSaleTextsFormComponent } from '../../ui/forms/whole-sale-texts-form/whole-sale-texts-form.component';
 import { wholeSaleTextsFacade } from './whole-sale-texts.facade';
-import { Observable } from 'rxjs';
+
 import { ITextModel } from '../../core/models/text.model';
 import { AsyncPipe } from '@angular/common';
 import { StorageService } from '../../core/services/generals/storage/storage.service';
 import { IItemTextBatchModel } from '../../core/models/item-text-batch.model';
-import { ResultBlockComponent } from '../../ui/blocks/result-block/result-block.component';
+
 import { ModalBlockComponent } from '../../ui/blocks/modal-block/modal-block.component';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-whole-sale-texts-container',
@@ -21,7 +20,6 @@ import { RouterLink } from '@angular/router';
     NavbarBlockComponent,
     ButtonElementComponent,
     WholeSaleTextsFormComponent,
-    ResultBlockComponent,
     ModalBlockComponent,
     AsyncPipe,
   ],

@@ -38,7 +38,7 @@ export const privateGuard: CanActivateFn = (
 ) => {
   // const currentUser = inject(Router).createUrlTree(['/', 'index']);
   // Verificar si el valor del servicio estático coincide con 'TOKEN'
-  const tokenValue = StorageService.getToken('TOKEN'); // Suponiendo que 'getToken' es un método para obtener el valor
+  const tokenValue = StorageService.getToken('TOKEN');
   if (tokenValue) {
     return true;
   } else {

@@ -11,6 +11,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ModalBlockComponent {
   @Input() dataSave: any;
   @Input() dataWholesaleQuoteModal: any;
+  @Input() dataBudgetSale: any;
   @Output() visible = new EventEmitter<boolean>();
 
   closeModal() {

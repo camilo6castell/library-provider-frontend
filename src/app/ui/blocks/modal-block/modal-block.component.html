@@ -146,7 +146,50 @@
         </tbody>
       </table>
 
-      }
+      } @else if (dataBudgetSale) { @if
+      (dataBudgetSale.messageFromServer.succeed) {
+      <h2 class="table__title">Resumen de cotización</h2>
+
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Type</th>
+            <th scope="col">Price</th>
+            <th scope="col">Discounts</th>
+            <th scope="col">Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let text of dataBudgetSale.suggestedTextsBatch; index">
+            <td>{{ text.title }}</td>
+            <td>{{ text.type }}</td>
+            <td>{{ text.price }}</td>
+            <td>
+              <ul *ngIf="text.discounts?.length > 0">
+                <li *ngFor="let discount of text.discounts">
+                  {{ discount.concept }}: {{ discount.percentage }}%
+                </li>
+              </ul>
+            </td>
+            <td>{{ text.totalPrice }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summary">
+        <p>Subtotal: {{ dataBudgetSale.quoteSummary?.subtotal }}</p>
+        <p>Descuentos:</p>
+        <ul *ngIf="dataBudgetSale.quoteSummary?.discounts?.length > 0">
+          <li *ngFor="let discount of dataBudgetSale.quoteSummary?.discounts">
+            {{ discount.concept }}: {{ discount.percentage }}%
+          </li>
+        </ul>
+        <p>Total: {{ dataBudgetSale.quoteSummary?.total }}</p>
+      </div>
+      } @else {
+      <h2>{{ dataBudgetSale.messageFromServer.message }}</h2>
+      } }
 
       <div class="modal-footer">
         <button class="modal__button" (click)="closeModal()">Cerrar</button>

@@ -52,4 +52,13 @@ export class UserService {
       token: body.token,
     });
   }
+  budgetSaleService(body: {
+    textsIndices: number[];
+    budget: number;
+    token: string;
+  }): Observable<any> {
+    const url = URL_RESOURCES.budgetSaleTexts;
+    console.log(body);
+    return this.httpService.post(url, body);
+  }
 }

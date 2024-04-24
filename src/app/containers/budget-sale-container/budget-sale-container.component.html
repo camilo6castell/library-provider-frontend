@@ -1,0 +1,15 @@
+<app-navbar-block
+  [isUser]="isUser"
+  (closeSessionEvent)="closeSession($event)"
+/>
+
+<app-budget-sale-form
+  (submitForm)="createBudgetSaleListener($event)"
+  [texts]="stockTexts"
+/>
+@if (isModal && dataBudgetSale != undefined){
+<app-modal-block
+  (visible)="closeModal($event)"
+  [dataBudgetSale]="dataBudgetSale"
+/>
+}

@@ -5,6 +5,7 @@ import { HomeContainerComponent } from '../containers/home-container/home-contai
 import { SaveAndQuoteTextContainerComponent } from '../containers/save-and-quote-text-container/save-and-quote-text-container.component';
 import { WholeSaleTextsContainerComponent } from '../containers/whole-sale-texts-container/whole-sale-texts-container.component';
 import { MainLayoutComponent } from '../ui/layouts/main-layout/main-layout.component';
+import { BudgetSaleContainerComponent } from '../containers/budget-sale-container/budget-sale-container.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
       {
         path: 'whole-sale-texts',
         component: WholeSaleTextsContainerComponent,
+        canActivate: [privateGuard],
+      },
+      {
+        path: 'budget-sale-texts',
+        component: BudgetSaleContainerComponent,
         canActivate: [privateGuard],
       },
     ],

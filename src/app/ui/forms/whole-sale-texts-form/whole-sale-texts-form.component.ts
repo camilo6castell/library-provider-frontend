@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { IItemTextBatchModel } from '../../../core/models/item-text-batch.model';
 import { ITextModel } from '../../../core/models/text.model';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { StorageService } from '../../../core/services/generals/storage/storage.service';
 import { RouterLink } from '@angular/router';
 
