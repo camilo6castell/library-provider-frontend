@@ -8,7 +8,8 @@ import { StorageService } from '../../core/services/generals/storage/storage.ser
 import { BudgetSaleFacadeFacade } from './budget-sale.facade';
 import { SaveAndQuoteTextFormComponent } from '../../ui/forms/save-and-quote-text-form/save-and-quote-text-form.component';
 import { BudgetSaleFormComponent } from '../../ui/forms/budget-sale-form/budget-sale-form.component';
-import { NgClass } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-budget-sale-container',
@@ -20,6 +21,7 @@ import { NgClass } from '@angular/common';
     ButtonElementComponent,
     ModalBlockComponent,
     BudgetSaleFormComponent,
+    AsyncPipe,
   ],
   templateUrl: './budget-sale-container.component.html',
 })
@@ -41,7 +43,7 @@ export class BudgetSaleContainerComponent {
     this.budgetSaleFacadeFacade.getStockTextsFecadeService();
     this.budgetSaleFacadeFacade.initSubsciptions();
 
-    // this.initializeSubscriptions();
+    this.initializeSubscriptions();
   }
 
   ngOnDestroy(): void {
@@ -57,8 +59,8 @@ export class BudgetSaleContainerComponent {
     this.budgetSaleFacadeFacade.createBudgetSaleFacadeService(budgetSaleEvent);
 
     this.isModal = true;
-    this.dataBudgetSale = this.storageService.get('resultBudgetSale');
-    console.log('***************************************', this.dataBudgetSale);
+    // this.dataBudgetSale = this.storageService.get('resultBudgetSale');
+    // console.log('***************************************', this.dataBudgetSale);
   }
 
   closeSession(closeSession: Boolean) {
@@ -68,14 +70,14 @@ export class BudgetSaleContainerComponent {
   }
 
   // MODAL
-  isModal: boolean = true;
-  dataBudgetSale: any = undefined;
+  isModal: boolean = false;
+  budgetSaleResult$: Observable<any>;
 
   closeModal(visible: boolean) {
     this.isModal = visible;
   }
 
-  // private initializeSubscriptions(): void {
-  //   this.stockTexts$ = this.wholeSaleTextsFacade.stockTexts$();
-  // }
+  private initializeSubscriptions(): void {
+    this.budgetSaleResult$ = this.budgetSaleFacadeFacade.budgetSaleResult$();
+  }
 }

@@ -58,6 +58,10 @@ export class BudgetSaleFacadeFacade {
 
   //
 
+  budgetSaleResult$(): Observable<any> {
+    return this.appState.user.budgetSaleResult$.$();
+  }
+
   createBudgetSaleFacadeService(body: {
     textsIndices: number[];
     budget: number;
@@ -70,13 +74,17 @@ export class BudgetSaleFacadeFacade {
           token: `Bearer ${this.storageService.get('TOKEN')}`,
         })
         .pipe(
-          tap((data) => {
-            alert(JSON.stringify(data));
-            this.storageService.set('resultBudgetSale', {
-              suggestedTextsBatch: data.suggestedTextsBatch,
-              quoteSummary: data.quoteSummary,
-              messageFromServer: data.messageFromServer,
-            });
+          tap(
+            this.appState.user.budgetSaleResult$.set.bind(this)
+
+            // (data) => {
+            // alert(JSON.stringify(data));
+
+            // this.storageService.set('resultBudgetSale', {
+            //   suggestedTextsBatch: data.suggestedTextsBatch,
+            //   quoteSummary: data.quoteSummary,
+            //   messageFromServer: data.messageFromServer,
+            // });
             // alert(
             //   JSON.stringify({
             //     booksQuote: data.booksQuote,
@@ -88,6 +96,13 @@ export class BudgetSaleFacadeFacade {
             // alert(JSON.stringify(data.novelsQuote));
             // alert(JSON.stringify(data.summary));
             // console.log(data.booksQuote, data.novelsQuote, data.summary);
+            // }
+          )
+        )
+        .pipe(
+          tap((data) => {
+            console.log('data: ', data);
+            console.log('this', this.appState.user.budgetSaleResult$.$());
           })
         )
         .subscribe()

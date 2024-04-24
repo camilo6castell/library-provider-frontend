@@ -9,9 +9,8 @@ import { ITextModel } from '../models/text.model';
 })
 export class UserState {
   private user$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  private stockTexts$: BehaviorSubject<ITextModel[]> = new BehaviorSubject(
-    null
-  );
+  private stockTexts$: BehaviorSubject<any> = new BehaviorSubject(null);
+  private budgetSaleResult$: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private readonly factory: StateFactory) {}
 
@@ -19,6 +18,7 @@ export class UserState {
     return {
       user: this.factory.state(this.user$),
       stockTexts: this.factory.state(this.stockTexts$),
+      budgetSaleResult$: this.factory.state(this.budgetSaleResult$),
     };
   }
 }

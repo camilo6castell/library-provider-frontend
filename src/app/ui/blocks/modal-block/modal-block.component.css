@@ -163,3 +163,10 @@ th {
 td {
   font-size: 1.2rem;
 }
+
+.table-budget-container {
+  width: 90dvw;
+  height: 40dvh;
+
+  overflow: scroll;
+}

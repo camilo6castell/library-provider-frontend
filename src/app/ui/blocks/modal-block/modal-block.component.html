@@ -16,7 +16,9 @@
         </div>
         <div class="modal-save__element">
           <span class="modal-save__element_label">Price:</span
-          ><span class="modal-save__element_value">{{ dataSave.price }}</span>
+          ><span class="modal-save__element_value">{{
+            dataSave.price.toFixed(1)
+          }}</span>
         </div>
 
         <ul class="modal-save__element-discount">
@@ -63,7 +65,7 @@
           <tbody>
             <tr *ngFor="let book of dataWholesaleQuoteModal.booksQuote">
               <td>{{ book.title }}</td>
-              <td>{{ book.price }}</td>
+              <td>{{ book.price.toFixed(1) }}</td>
               <td>
                 <ul *ngIf="book.discounts?.length > 0">
                   <li *ngFor="let discount of book.discounts">
@@ -71,7 +73,7 @@
                   </li>
                 </ul>
               </td>
-              <td>{{ book.totalPrice }}</td>
+              <td>{{ book.totalPrice.toFixed(1) }}</td>
             </tr>
           </tbody>
         </table>
@@ -95,7 +97,7 @@
         <tbody>
           <tr *ngFor="let novel of dataWholesaleQuoteModal.novelsQuote">
             <td>{{ novel.title }}</td>
-            <td>{{ novel.price }}</td>
+            <td>{{ novel.price.toFixed(1) }}</td>
             <td>
               <ul *ngIf="novel.discounts?.length > 0">
                 <li *ngFor="let discount of novel.discounts">
@@ -103,7 +105,7 @@
                 </li>
               </ul>
             </td>
-            <td>{{ novel.totalPrice }}</td>
+            <td>{{ novel.totalPrice.toFixed(1) }}</td>
           </tr>
         </tbody>
       </table>
@@ -123,7 +125,7 @@
         <tbody>
           <tr>
             <td>Subtotal</td>
-            <td>{{ dataWholesaleQuoteModal?.summary?.subtotal }}</td>
+            <td>{{ dataWholesaleQuoteModal?.summary?.subtotal.toFixed(1) }}</td>
           </tr>
           <tr *ngIf="dataWholesaleQuoteModal?.summary?.discounts?.length > 0">
             <td>Discounts</td>
@@ -141,56 +143,78 @@
           </tr>
           <tr>
             <td>Total</td>
-            <td>{{ dataWholesaleQuoteModal?.summary?.total }}</td>
+            <td>{{ dataWholesaleQuoteModal?.summary?.total.toFixed(1) }}</td>
           </tr>
         </tbody>
       </table>
 
-      } @else if (dataBudgetSale) { @if
-      (dataBudgetSale.messageFromServer.succeed) {
-      <h2 class="table__title">Resumen de cotización</h2>
+      } @else if (dataBudgetSale) {
 
-      <table class="table table-dark">
+      <h2 class="tables-title">Resumen de cotización</h2>
+      @if (dataBudgetSale.messageFromServer.succeed) {
+      <div class="table-budget-container">
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Type</th>
+              <th scope="col">Price</th>
+              <th scope="col">Discounts</th>
+              <th scope="col">Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let text of dataBudgetSale.suggestedTextsBatch; index">
+              <td>{{ text.title }}</td>
+              <td>{{ text.type }}</td>
+              <td>{{ text.price.toFixed(1) }}</td>
+              <td>
+                <ul *ngIf="text.discounts?.length > 0">
+                  <li *ngFor="let discount of text.discounts">
+                    {{ discount.concept }}: {{ discount.percentage }}%
+                  </li>
+                </ul>
+              </td>
+              <td>{{ text.totalPrice.toFixed(1) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="tables-title">Summary</h2>
+
+      <table class="summary">
         <thead>
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Type</th>
-            <th scope="col">Price</th>
-            <th scope="col">Discounts</th>
-            <th scope="col">Total Price</th>
+            <th>Subtotal</th>
+            <th>Descuentos</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let text of dataBudgetSale.suggestedTextsBatch; index">
-            <td>{{ text.title }}</td>
-            <td>{{ text.type }}</td>
-            <td>{{ text.price }}</td>
+          <tr>
+            <td>{{ dataBudgetSale.quoteSummary?.subtotal.toFixed(1) }}</td>
             <td>
-              <ul *ngIf="text.discounts?.length > 0">
-                <li *ngFor="let discount of text.discounts">
+              <ul *ngIf="dataBudgetSale.quoteSummary?.discounts?.length > 0">
+                <li
+                  *ngFor="
+                    let discount of dataBudgetSale.quoteSummary?.discounts
+                  "
+                >
                   {{ discount.concept }}: {{ discount.percentage }}%
                 </li>
               </ul>
             </td>
-            <td>{{ text.totalPrice }}</td>
+            <td>
+              {{ dataBudgetSale.quoteSummary?.total.toFixed(1) }}
+            </td>
           </tr>
         </tbody>
       </table>
-
-      <div class="summary">
-        <p>Subtotal: {{ dataBudgetSale.quoteSummary?.subtotal }}</p>
-        <p>Descuentos:</p>
-        <ul *ngIf="dataBudgetSale.quoteSummary?.discounts?.length > 0">
-          <li *ngFor="let discount of dataBudgetSale.quoteSummary?.discounts">
-            {{ discount.concept }}: {{ discount.percentage }}%
-          </li>
-        </ul>
-        <p>Total: {{ dataBudgetSale.quoteSummary?.total }}</p>
-      </div>
       } @else {
+      <h2 class="tables-title">Problema con tu cotización:</h2>
       <h2>{{ dataBudgetSale.messageFromServer.message }}</h2>
       } }
-
       <div class="modal-footer">
         <button class="modal__button" (click)="closeModal()">Cerrar</button>
       </div>

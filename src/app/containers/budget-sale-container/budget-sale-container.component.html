@@ -7,9 +7,9 @@
   (submitForm)="createBudgetSaleListener($event)"
   [texts]="stockTexts"
 />
-@if (isModal && dataBudgetSale != undefined){
+@if (isModal ){
 <app-modal-block
   (visible)="closeModal($event)"
-  [dataBudgetSale]="dataBudgetSale"
+  [dataBudgetSale]="budgetSaleResult$ | async"
 />
 }

@@ -83,3 +83,19 @@
     font-weight: 800;
   }
 }
+
+.form-budget {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 25%;
+  left: 4%;
+  z-index: 990;
+
+  padding: 0.5rem;
+  background-color: brgba(61, 61, 61, 0.274);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+
+  border: rgba(0, 0, 0, 0.342) 1px solid;
+}

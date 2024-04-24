@@ -15,6 +15,7 @@ export class ModalBlockComponent {
   @Output() visible = new EventEmitter<boolean>();
 
   closeModal() {
+    console.log('modal', this.dataBudgetSale);
     localStorage.removeItem('resultWholesaleQuoteModal');
     this.visible.emit(false);
   }

@@ -22,55 +22,20 @@
       }
     </tbody>
   </table>
-  <label for="budget">Presupuesto:</label>
-  <input
-    type="number"
-    id="budget"
-    name="budget"
-    [formControlName]="'budget'"
-    required
-    min="0.01"
-  />
+  <div class="form-budget">
+    <label for="budget">Presupuesto:</label>
+    <input
+      type="number"
+      id="budget"
+      name="budget"
+      [formControlName]="'budget'"
+      required
+      min="0.01"
+    />
+  </div>
   <button class="form__button" type="submit">Crear cotización</button>
 </form>
 <span class="form__link-container">
   <span class="form__link-container__text">Back to </span>
   <a class="form__link-container__link" routerLink="/index/signup">main menu</a>
 </span>
-
-<!-- <h2 class="form__title">Agregar y cotiza un texto</h2>
-<form [formGroup]="textForm" (ngSubmit)="onSubmit()" class="form">
-  <table class="table">
-    <thead class="table-head">
-      <tr class="table-head__row">
-        <th class="table-head__type">Type</th>
-        <th class="table-head__title">Title</th>
-        <th class="table-head__price">Base Price</th>
-        <th class="table-quantity">Quantity</th>
-      </tr>
-    </thead>
-    <tbody class="table-body">
-      @for(text of texts; track $index){
-      <tr class="table-row__hover">
-        <td>{{ text.type }}</td>
-        <td>{{ text.title }}</td>
-        <td>{{ text.basePrice }}</td>
-        <td class="table-input">
-          <input
-            type="number"
-            [formControlName]="'text_' + $index"
-            placeholder="Cantidad"
-            class="quantity"
-          />
-        </td>
-      </tr>
-      }
-    </tbody>
-  </table>
-  <button class="form__button" type="submit">Crear cotización</button>
-</form>
-<span class="form__link-container">
-  <span class="form__link-container__text">Back to{{ "  " }}</span>
-  <a class="form__link-container__link" routerLink="/index/signup">main menu</a>
-</span>
- -->
