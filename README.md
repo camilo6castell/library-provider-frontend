@@ -1,27 +1,47 @@
-# ProviderFrontend
+# Library Provider: Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![RxJS](https://img.shields.io/badge/RxJS-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)
 
-## Development server
+## About
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project is developed using **Angular** and **TypeScript**.
 
-## Code scaffolding
+Library Provider is a web application designed to manage library resources efficiently. This frontend part of the application provides an interactive user interface to perform various library management tasks.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+1. User authentication and authorization.
+2. Dynamic and responsive UI with Angular.
+3. Integration with backend services for data fetching and manipulation.
+4. Form validation and error handling.
+5. Real-time updates using RxJS.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+To run this project locally, follow these steps:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/camilo6castell/library-provider-frontend.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd library-provider-frontend
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
 
-## Running end-to-end tests
+   ```bash
+   npm start
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Contact
 
-## Further help
+[GitHub](https://github.com/camilo6castell?tab=repositories)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[LinkedIn](https://www.linkedin.com/in/camilocastell/)

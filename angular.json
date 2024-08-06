@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "library-provider-frontend",
   "projects": {
-    "provider-frontend": {
+    "library-provider-frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/provider-frontend",
+            "outputPath": "dist/library-provider-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -56,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "provider-frontend:build:production"
+              "buildTarget": "library-provider-frontend:build:production"
             },
             "development": {
-              "buildTarget": "provider-frontend:build:development"
+              "buildTarget": "library-provider-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "provider-frontend:build"
+            "buildTarget": "library-provider-frontend:build"
           }
         },
         "test": {
@@ -82,5 +82,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
